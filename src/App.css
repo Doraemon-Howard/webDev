@@ -7,6 +7,13 @@
   pointer-events: none;
 }
 
+/* In your CSS file */
+.background {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;  /* Full page height */
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
