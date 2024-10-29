@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+**Habit Tracker Web Application**  
+**Description**  
+The **Habit Tracker** is a web application designed to help users build and track their habits over time. The application encourages users by displaying a daily motivational quote and a beautiful random background image. The main features include the ability to add new habits, track them on a list, and get inspired with motivational quotes. By leveraging clean and modern design, the app aims to make habit tracking an enjoyable part of the user’s daily routine.  
+**Problem It Solves**  
+Maintaining habits is crucial for personal development, but it can be challenging without a system to track them. This web app provides a simple and visually appealing way to keep track of habits, encouraging users to stay consistent through motivational quotes and an interactive interface. Additionally, the app randomly generates a fresh background image on each load, keeping the interface engaging.  
+**Instructions for Setup and Running the Project**  
+**1\. Clone the Repository**  
+```bash
+git clone https://github.com/your-username/habit-tracker.git  
+cd habit-tracker  
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**2\. Install Dependencies**  
+Make sure you have Node.js installed. Then, run the following command to install all required dependencies:  
+```bash
+npm install  
+```
+**3\. Set Up API Keys**  
+**Pexels API:**
 
-## Available Scripts
+	•	Sign up at [Pexels](https://www.pexels.com/api/) to get your API key.
 
-In the project directory, you can run:
+	•	In the code, replace YOUR\_API\_KEY with your actual Pexels API key in background.js.  
+**ZenQuotes API:**
 
-### `npm start`
+	•	If using ZenQuotes for the motivational quote, ensure the API is correctly integrated with the endpoint in the MotivationalQuote.js file.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+	•	Update with any required API keys or authentication.  
+**4\. Create a `.env` File**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create a `.env` file in the root directory to store your API key securely.
 
-### `npm test`
+**5\. Run the Application**  
+Start the development server by running:  
+npm start  
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.  
+**APIs Used**  
+**1\. Pexels API**  
+The Pexels API is used to fetch high-quality, random background images for the app. On each page load, the app queries Pexels’ curated image collection and displays a different landscape image as the background, providing a fresh and engaging user experience.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+	•	Endpoint used: https://api.pexels.com/v1/curated
 
-### `npm run build`
+	•	Random image selection: A curated set of images is retrieved, and one is randomly selected to display as the background.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	•	Integration: The API key for Pexels is included in the request headers, and the image URL is then dynamically set as the page background.  
+**2\. ZenQuotes API**  
+The ZenQuotes API provides a daily motivational quote, inspiring users to stay positive as they work towards building their habits.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+	•	Endpoint used: https://zenquotes.io/api/random
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+	•	Integration: A random quote is fetched and displayed at the top of the app.  
+**Handling CORS (Cross-Origin Resource Sharing)**  
+During development, I encountered **CORS (Cross-Origin Resource Sharing)** issues when trying to fetch data from external APIs, such as the ZenQuotes API. Since modern browsers restrict cross-origin HTTP requests due to security reasons, CORS policy was initially blocking the requests.  
+To solve this issue:
 
-### `npm run eject`
+	1\.	**CORS Proxy**: I used a CORS proxy like cors-anywhere to temporarily bypass CORS restrictions while fetching resources from ZenQuotes. A request to the API was prepended with the CORS proxy URL to enable the browser to retrieve the resource without triggering CORS policy issues. This was only a temporary solution for development.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+	2\.	**Pexels API**: The Pexels API didn’t present CORS issues because it includes the necessary Access-Control-Allow-Origin headers in its response, allowing the image resources to be fetched directly without additional workarounds.  
+**Important**: In production, it’s recommended to handle CORS by ensuring that APIs allow requests from the relevant domains, or by using server-side solutions that proxy the API requests and serve them to the frontend.  
+**Credits for AI-Generated Code**  
+This project was built with the assistance of AI-generated code using OpenAI’s ChatGPT for the following parts:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+	•	**Initial Project Setup**: AI assisted in generating the structure of the React project and organizing components effectively.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+	•	**Background Image Fetching**: Code snippets for fetching a random background image from the Pexels API were generated with AI’s help, including error handling and applying the image as a full-page background.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+	•	**Motivational Quote Integration**: AI provided a solution for integrating the ZenQuotes API to fetch and display motivational quotes.
 
-## Learn More
+	•	**CORS Solution**: AI assisted in explaining the CORS issue and recommending the use of CORS proxies and alternative solutions for handling cross-origin requests.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The AI suggestions were reviewed and integrated by the developer, with custom modifications made as needed to meet project requirements.  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Conclusion**  
+This Habit Tracker web application is a lightweight and interactive tool to help users track habits and stay motivated with beautiful background images and inspirational quotes. Whether for personal use or as a tool for improving daily routines, this app aims to provide a seamless and visually pleasing experience for all users.  
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

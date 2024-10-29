@@ -9,7 +9,7 @@ function App() {
       try {
         const response = await fetch('https://api.pexels.com/v1/curated?per_page=15', {
           headers: {
-            Authorization: 'h9Katcak4hnfw0igDu0idl7v6qAq1trPmSnAmUewFPMyNIgmWSm34hZg',  // Replace YOUR_API_KEY with your actual API key
+            Authorization: 'API_KEY',  // Replace YOUR_API_KEY with your actual API key
           },
         });
 
